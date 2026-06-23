@@ -34,7 +34,7 @@ export class AddCourseComponent {
         next:(response)=>{
           console.log(response);
           this._ToastrService.success('Course added successfully');
-          this._Router.navigate(['/home']);
+          // this._Router.navigate(['/home']);
         }
       })
     }
