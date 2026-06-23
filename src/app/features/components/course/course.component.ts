@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CoursesService } from '../../../shared/services/courses.service';
 import { Course } from '../../../core/interfaces/course';
 import { CurrencyPipe, DatePipe } from '@angular/common';
@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course',
-  imports: [CurrencyPipe,DatePipe],
+  imports: [CurrencyPipe, DatePipe, RouterLink],
   templateUrl: './course.component.html',
   styleUrl: './course.component.css'
 })

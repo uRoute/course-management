@@ -28,7 +28,7 @@
 
                     }
                     <div class="d-flex justify-content-between w-50 my-3">
-                        <button class="d-flex justify-content-between align-items-center btn btn-outline-primary">Update Course <i class="fa-solid fa-pen"></i></button>
+                        <button [routerLink]="['/update-course', courseData.course_id]" class="d-flex justify-content-between align-items-center btn btn-outline-primary">Update Course <i class="fa-solid fa-pen"></i></button>
                         <button (click)="removeCourse(courseData.course_id)" class="d-flex justify-content-between align-items-center btn btn-outline-danger">Remove Course <i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>

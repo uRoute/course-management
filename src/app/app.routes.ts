@@ -60,6 +60,14 @@ export const routes: Routes = [
           ),
         title: 'Add Course',
       },
+      {
+        path: 'update-course/:courseId',
+        loadComponent: () =>
+          import('./features/components/update-course/update-course.component').then(
+            (c) => c.UpdateCourseComponent,
+          ),
+        title: 'Update Course',
+      }
     ],
   },
 ];
