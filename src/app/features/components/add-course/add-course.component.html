@@ -1,0 +1,111 @@
+<div class="bg-light p-3 rounded-3 border border-3 border-dark">
+
+    <h1 class="fw-bold fs-1 text-dark-emphasis my-3 py-2">Add Course <i class="fa-solid fa-file-circle-plus"></i></h1>
+
+
+    <form [formGroup]="courseForm" (ngSubmit)="addCourse(courseForm)">
+    <div>
+        <label for="name">Course Name:</label>
+        <input class="form-control p-2 my-2" type="text" id="name" formControlName="courseName">
+        @if(courseForm.get('courseName')?.errors && courseForm.get('courseName')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(courseForm.get('courseName')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Course name is required.</p>
+            }
+            @if(courseForm.get('courseName')?.getError('minlength')){
+                <p class="fw-bold m-0 p-0">Course name must be at least 3 characters long.</p>
+            }
+            @if(courseForm.get('courseName')?.getError('maxlength')){
+                <p class="fw-bold m-0 p-0">Course name cannot be longer than 10 characters.</p>
+            }
+        </div>
+        }
+
+    </div>
+    <div>
+        <label for="instructor">Instructor:</label>
+        <input class="form-control p-2 my-2" type="text" id="instructor" formControlName="instructorName">
+        @if(courseForm.get('instructorName')?.errors && courseForm.get('instructorName')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(courseForm.get('instructorName')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Instructor name is required.</p>
+            }
+            @if(courseForm.get('instructorName')?.getError('minlength')){
+                <p class="fw-bold m-0 p-0">Instructor name must be at least 3 characters long.</p>
+            }
+            @if(courseForm.get('instructorName')?.getError('maxlength')){
+                <p class="fw-bold m-0 p-0">Instructor name cannot be longer than 10 characters.</p>
+            }
+        </div>
+        }
+
+    </div>
+
+    
+    <div>
+        <label for="category"> Category:</label>
+        <input autocomplete="off" list="categories" class="form-control p-2 my-2" type="text" id="category" formControlName="category">
+        <datalist id="categories">
+            <option value="Web Development">
+            <option value="Mobile Development">
+            <option value="Data Science">
+        </datalist>
+    </div>
+
+
+    <div>
+        <label for="duration">Duration:</label>
+        <input class="form-control p-2 my-2" type="number" id="duration" formControlName="duration" min="1">
+        @if(courseForm.get('duration')?.errors && courseForm.get('duration')?.touched){
+        <div class="alert alert-warning py-2 my -2">
+            @if(courseForm.get('duration')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Duration is required.</p>
+            }
+            @if (courseForm.get('duration')?.getError('pattern')) {
+                <p class="fw-bold m-0 p-0">Duration must be greater than (1Hr).</p>
+            }
+
+        </div>
+        }
+
+    </div>
+
+
+    
+    <div>
+        <label for="price">Price:</label>
+        <input class="form-control p-2 my-2" type="number" id="price" formControlName="price" min="0">
+        @if(courseForm.get('price')?.errors && courseForm.get('price')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(courseForm.get('price')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Price is required.</p>
+            }
+            @if (courseForm.get('price')?.getError('pattern')) {
+                <p class="fw-bold m-0 p-0">Price must be a Greater than 0.</p>
+            }
+
+        </div>
+        }
+
+    </div>
+
+    <div>
+        <label for="status">Status:</label>
+        <select class="form-control p-2 my-2" id="status" formControlName="status">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="draft">Draft</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="description">Description:</label>
+        <textarea class="form-control p-2 my-2" id="description" formControlName="description"></textarea>
+    </div>
+
+
+
+
+    <button class="btn btn-outline-dark d-block w-100" [disabled]="!courseForm.valid">Add Course</button>
+</form>
+</div>

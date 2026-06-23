@@ -1,0 +1,37 @@
+<div class="bg-light p-3 rounded-3 border border-3 border-dark">
+    <form [formGroup]="login" (ngSubmit)="submitLoginForm(login)">
+    <div>
+        <label for="email">Email:</label>
+        <input class="form-control p-2 my-2" type="email" id="email" formControlName="email">
+        @if(login.get('email')?.errors && login.get('email')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(login.get('email')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Email is required.</p>
+            }
+            @if(login.get('email')?.getError('email')){
+                <p class="fw-bold m-0 p-0">Invalid email format.</p>
+            }
+        </div>
+        }
+
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input class="form-control p-2 my-2" type="password" id="password" formControlName="password">
+        @if(login.get('password')?.errors && login.get('password')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(login.get('password')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Password is required.</p>
+            }
+            @if(login.get('password')?.getError('pattern')){
+                <p class="fw-bold m-0 p-0">Password must start with an uppercase letter and contain only letters and numbers, 6-10 characters long.</p>
+            }
+        </div>
+        }
+    </div>
+
+
+    <button class="btn btn-outline-dark d-block w-100" type="submit" [disabled]="!login.valid">Login</button>
+</form>
+</div>

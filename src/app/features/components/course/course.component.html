@@ -1,0 +1,38 @@
+<div>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-12 col-md-6 p-2">
+                <div class="course-img position-relative">
+                    <span class="fw-bold text-decoration-underline position-absolute top-0 start-0 bg-info text-white p-1 rounded-pill">ID: {{ courseData.course_id }}</span>
+                    <img src="./images/course2.avif" alt="course image" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-2">
+                <div class="course-details">
+                    <h1 class="course-title my-3">{{ courseData.courseName }}</h1>
+                    <p class="course-description my-3">{{ courseData.description }}</p>
+                    <h1 class="fs-3 my-3 fw-bold course-instructor">Instructor: {{ courseData.instructorName }}</h1>
+                    <h3 class="course-duration my-3">Duration: {{ courseData.duration }} Hr</h3>
+                    <h3 class="course-duration my-3">Price: {{ courseData.price |currency :'USD'}}</h3>
+                    <h3 class="course-duration text-secondary-emphasis my-3">Category: {{ courseData.category }}</h3>
+                    <h3 class="course-duration text-secondary-emphasis my-3">Created Date: {{ courseData.createdDate | date:'shortDate' }}</h3>
+                    @if(courseData.status === 'active') {
+                        <h3 class="course-duration text-success my-3">Status: {{ courseData.status }}</h3>
+                    } @else {
+                        <h3 class="course-duration text-danger my-3">Status: {{ courseData.status }}</h3>
+
+                    }
+                    <div class="d-flex justify-content-between w-50 my-3">
+                        <button class="d-flex justify-content-between align-items-center btn btn-outline-primary">Update Course <i class="fa-solid fa-pen"></i></button>
+                        <button (click)="removeCourse(courseData.course_id)" class="d-flex justify-content-between align-items-center btn btn-outline-danger">Remove Course <i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

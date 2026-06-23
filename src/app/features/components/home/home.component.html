@@ -1,0 +1,33 @@
+<div class="container">
+
+    <input type="text" class="form-control my-3" placeholder="Search for courses by ID..." [(ngModel)]="searchText">
+
+
+    <button class="btn btn-primary d-block ms-auto mb-3" routerLink="/add-course">Add new Course <i class="fa-solid fa-clone"></i></button>
+
+
+    <div class="row">
+
+        @for(courses of allCourses | search:searchText ;track courses.course_id){
+
+        <div class="col-12 col-md-4 col-lg-3 p-2">
+
+            <div class="course  p-3 border border-2 border-light-subtle rounded-3" [routerLink]="['/courses',courses.course_id]">
+                <span class="c_id position-absolute top-0 start-0 bg-info text-white p-1 rounded-end">ID: {{courses.course_id}}  </span>
+                <span class="c_p fw-bold position-absolute top-0 end-0 bg-info text-white p-1 rounded-end">Price: {{courses.price | currency:'USD'}} </span>
+                <img class="w-100" src="./images/course2.avif" alt="course image">
+                <div class="course-info d-flex flex-column align-items-center justify-content-center rounded-3 p-2 text-center">
+                    <h1 class="fs-6">Course name: {{courses.courseName}} </h1>
+                    <h2 class="fs-6 ">Instructor: {{courses.instructorName}} </h2>
+                   <button class="btn btn-outline-primary">View Details</button> 
+                   
+                </div>
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+<div class="bg-light p-3 rounded-3 border border-3 border-dark">
+    <form [formGroup]="register" (ngSubmit)="submitRegisterForm(register)">
+    <div>
+        <label for="name">Name:</label>
+        <input class="form-control p-2 my-2" type="text" id="name" formControlName="name">
+        @if(register.get('name')?.errors && register.get('name')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(register.get('name')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Name is required.</p>
+            }
+            @if(register.get('name')?.getError('minlength')){
+                <p class="fw-bold m-0 p-0">Name must be at least 3 characters long.</p>
+            }
+            @if(register.get('name')?.getError('maxlength')){
+                <p class="fw-bold m-0 p-0">Name cannot be longer than 10 characters.</p>
+            }
+        </div>
+        }
+
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input class="form-control p-2 my-2" type="email" id="email" formControlName="email">
+        @if(register.get('email')?.errors && register.get('email')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(register.get('email')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Email is required.</p>
+            }
+            @if(register.get('email')?.getError('email')){
+                <p class="fw-bold m-0 p-0">Invalid email format.</p>
+            }
+        </div>
+        }
+    </div>
+
+    <div>
+        <label for="age">Age:</label>
+        <input class="form-control p-2 my-2" type="number" id="age" formControlName="age">
+        @if(register.get('age')?.errors && register.get('age')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(register.get('age')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Age is required.</p>
+            }
+            @if(register.get('age')?.getError('min')){
+                <p class="fw-bold m-0 p-0">Age must be at least 16.</p>
+            }
+            @if(register.get('age')?.getError('max')){
+                <p class="fw-bold m-0 p-0">Age cannot be more than 80.</p>
+            }
+        </div>
+        }
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input class="form-control p-2 my-2" type="password" id="password" formControlName="password">
+        @if(register.get('password')?.errors && register.get('password')?.touched){
+        <div class="alert alert-warning py-2 my-2">
+            @if(register.get('password')?.getError('required')){
+                <p class="fw-bold m-0 p-0">Password is required.</p>
+            }
+            @if(register.get('password')?.getError('minlength')){
+                <p class="fw-bold m-0 p-0">Password must be at least 6 characters long.</p>
+            }
+        </div>
+        }   
+    </div>
+
+
+
+
+
+    <button class="btn btn-outline-dark d-block w-100" type="submit" [disabled]="!register.valid">Register</button>
+</form>
+</div>

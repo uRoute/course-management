@@ -1,0 +1,34 @@
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.course{
+    /* background-image: url('./../../../../../public/images/course2.avif');
+    background-size: 100% 100%;
+    background-position: center; */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+.course-info{
+    margin: 0.5rem;
+    opacity: 0;
+    position: absolute;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(0.7rem);
+    transition: all 0.2s ease-in-out;
+
+}
+.course:hover{
+    box-shadow: 2px 2px 0px #000;
+    .course-info{
+        opacity: 1;
+    }
+}
